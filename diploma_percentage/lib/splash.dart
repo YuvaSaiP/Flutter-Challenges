@@ -1,39 +1,43 @@
 import 'package:flutter/material.dart';
 import 'dart:async';
-
-class splash extends StatefulWidget {
-  splash({Key key}) : super(key: key);
-
-  _splashState createState() => _splashState();
+class SplashScreen extends StatefulWidget {
+  _SplashScreenState createState() => _SplashScreenState();
 }
 
-class _splashState extends State<splash> {
- 
+class _SplashScreenState extends State<SplashScreen> {
   @override
   void initState(){
     super.initState();
     Timer(Duration(seconds: 3), () => Navigator.pushReplacementNamed(context, "/homescreen"));
   }
-
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: Stack(
-        fit: StackFit.expand,
-        children: <Widget>[
-          Container(
-            width: MediaQuery.of(context).size.width,
-            height: MediaQuery.of(context).size.width,
-            color: Colors.white,
-          ),
-          Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: <Widget>[
-              Icon(Icons.school,color:Colors.deepOrange,size: 160.0,),
-            ],
-          ),
-        ],
+      home: Scaffold(
+        body: Stack(
+          fit: StackFit.expand,
+          children: <Widget>[
+            Container(
+              decoration: BoxDecoration(
+           gradient: LinearGradient(colors: [Colors.red,Colors.indigo],
+                begin: Alignment.topCenter,
+                end: Alignment.bottomRight
+                ),
+              ),
+            ),
+            Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+          children: <Widget>[
+                CircleAvatar(
+                  backgroundColor: Colors.white,
+                  radius: 75.0,
+                  child: Icon(Icons.add_a_photo,color: Colors.blueAccent,size: 100.0,),
+                ),
+              ],
+            ),
+          ],
+        ),
       ),
     );
   }
